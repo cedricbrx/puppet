@@ -1,0 +1,16 @@
+APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::Download-Upgradeable-Packages "1";
+APT::Periodic::AutocleanInterval "1";
+APT::Periodic::Unattended-Upgrade "1";
+
+// Automatically upgrade packages from these (origin:archive) pairs
+Unattended-Upgrade::Origins-Pattern {
+	"o=*";
+};
+
+Unattended-Upgrade::Remove-Unused-Dependencies "true";
+
+// Install all unattended-upgrades when the machine is shuting down
+// instead of doing it in the background while the machine is running
+// This will (obviously) make shutdown slower
+Unattended-Upgrade::InstallOnShutdown "true";
