@@ -93,6 +93,7 @@ class multimedia {
 }
 
 class gnomeshell {
+	require apt
 	package {"gnome-power-manager":
 		ensure => purged,
 	}
@@ -224,6 +225,7 @@ class synology {
 }     
 
 class games {
+	require apt
 	package {"gnome-mines":
 		ensure => purged,
 	}
