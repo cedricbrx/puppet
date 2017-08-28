@@ -1,0 +1,37 @@
+#!/bin/bash
+
+set -e
+
+distri=`lsb_release -c | cut -f2`
+
+if [ $(dpkg-query -W -f='${Status}' curl 2>/dev/null | grep -c "ok installed") -eq 0 ]; then
+  echo "Installing curl...."
+  sudo apt-get install curl
+  fi
+
+if [ $(dpkg-query -W -f='${Status}' puppet 2>/dev/null | grep -c "ok installed") -eq 0 ]; then
+  echo "Installing puppet..."
+  sudo apt-get install puppet
+fi
+
+online_sha512=$(curl -s https://raw.githubusercontent.com/cedricbrx/puppet-$distri/master/site.pp | sha512sum | awk '{print $1}')
+local_sha512=`[ -f /etc/puppet/site.pp ] && sha512sum "/etc/puppet/site.pp" | awk '{print $1}' || echo 0`
+online_facter_sha512=$(curl -s https://raw.githubusercontent.com/cedricbrx/puppet-$distri/master/facter_brandenbourger.sh | sha512sum | awk '{print $1}')
+local_facter_sha512=`[ -f /var/cache/puppet/facts.d/facter_brandenbourger.sh ] && sha512sum "/var/cache/puppet/facts.d/facter_brandenbourger.sh" | awk '{print $1}' || echo 0`
+
+if [[ "$online_sha512" != "$local_sha512" ]] || [[ "$online_facter_sha512" != "$local_facter_sha512" ]] || [[ `date '+%A'` == "Sunday" ]] ; then
+  wget -N -q https://raw.githubusercontent.com/cedricbrx/puppet-$distri/master/facter_brandenbourger.sh -O /var/cache/puppet/facts.d/facter_brandenbourger.sh
+  chmod +x /var/cache/puppet/facts.d/facter_brandenbourger.sh 
+  if [ $? -ne 0 ]; then
+  	/usr/bin/logger -i "Puppet has no internet connection, exiting" -t "puppet-apply"
+	exit 1
+  fi
+  puppet apply /etc/puppet/site-$distri.pp
+  if [ $? -eq 0 ]; then
+      /usr/bin/logger -i "Puppet has run successfully" -t "puppet-apply"
+      exit 0
+  else
+      /usr/bin/logger -i "Puppet has run into an error, please run Puppet manually" -t "puppet-apply"
+      exit 1
+  fi
+fi
