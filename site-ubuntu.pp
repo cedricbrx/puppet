@@ -12,12 +12,12 @@ class repository {
 	$mirror="deb http://lu.archive.ubuntu.com/ubuntu/"
 	$security="deb http://security.ubuntu.com/ubuntu/"
 	$packages="main restricted universe multiverse"
-	#file {'/etc/apt/trusted.gpg.d/brandenbourger.gpg':
-	#	source         => 'https://github.com/cedricbrx/puppet-ubuntu/raw/master/files/etc/apt/trusted.gpg.d/brandenbourger.gpg',
-	#	ensure         => present,
-	#	checksum       => sha256,
-	#	checksum_value => '1f36daf59e021d10d53d9aedb5d784db59ce2d73c01594352eb9c6b809a70161',
-	#}
+	file {'/etc/apt/trusted.gpg.d/brandenbourger.gpg':
+		source         => 'https://github.com/cedricbrx/puppet-ubuntu/raw/master/etc/apt/trusted.gpg.d/brandenbourger.gpg',
+		ensure         => present,
+		checksum       => sha256,
+		checksum_value => '1f36daf59e021d10d53d9aedb5d784db59ce2d73c01594352eb9c6b809a70161',
+	}
 	file {'/etc/apt/sources.list':
 		ensure => present,
 		owner   => root,
@@ -71,11 +71,24 @@ class config {
 #}
 
 class multimedia {
+	require apt 
+	package {"ubuntu-restricted-extras":
+		ensure => installed,
+	}
 	package {"rhythmbox":
 		ensure => purged,
 	}
 	package {"flashplugin-installer":
 		ensure => purged,
+		require => Package["ubuntu-restricted-extras"],
+	}
+	exec {'configure-libdvd-pkg':
+		command => '/bin/sh -c "echo libdvd-pkg libdvd-pkg/post-invoke_hook-install boolean true | /usr/bin/debconf-set-selections"',
+		unless  => '/usr/bin/debconf-get-selections | /bin/grep "libdvd-pkg/post-invoke_hook-install"',
+	}
+	package {'libdvd-pkg':
+		ensure  => installed,
+		require => Exec['configure-libdvd-pkg'],
 	}
 }
 
