@@ -55,7 +55,7 @@ class apt {
 
 class config {
 	exec {'accept-msttcorefonts-license':
-		command => '/bin/sh -c "echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | /usr/bin/debconf-set-selections"',
+		command => '/usr/bin/debconf-set-selections <<< "echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true"',
 		unless  => '/usr/bin/debconf-get-selections | /bin/grep "msttcorefonts/accepted-mscorefonts-eula.*true"',
 	}
 	package {'ttf-mscorefonts-installer':
@@ -83,7 +83,7 @@ class multimedia {
 		require => Package["ubuntu-restricted-extras"],
 	}
 	exec {'configure-libdvd-pkg':
-		command => '/bin/sh -c "echo libdvd-pkg libdvd-pkg/post-invoke_hook-install boolean true | /usr/bin/debconf-set-selections"',
+		command => '/usr/bin/debconf-set-selections <<< "libdvd-pkg libdvd-pkg/post-invoke_hook-install boolean true\nlibdvd-pkg libdvd-pkg/build boolean true"',
 		unless  => '/usr/bin/debconf-get-selections | /bin/grep "libdvd-pkg/post-invoke_hook-install"',
 	}
 	package {'libdvd-pkg':
