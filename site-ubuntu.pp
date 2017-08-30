@@ -70,6 +70,15 @@ class config {
 #	}
 #}
 
+#class thunderbird {
+#	package {"xul-ext-gdata-provider":
+#		ensure => installed,
+#	}
+#	package {"xul-ext-gcontactsync":
+#		ensure => installed,
+#	}
+#}
+
 class multimedia {
 	require apt 
 	package {"ubuntu-restricted-extras":
