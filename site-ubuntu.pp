@@ -106,10 +106,6 @@ class gnomeshell {
 	package {"gnome-shell-extension-better-volume":
 		ensure => installed,
 	}
-	package {"gnome-shell-extension-top-icons-plus":
-		ensure => installed,
-	}
-	
 }
 
 class utilities {
