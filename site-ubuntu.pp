@@ -138,9 +138,6 @@ class utilities {
 	package {"keepassx":
 		ensure => installed,
 	}
-	package {"pyrenamer":
-		ensure => installed,
-	}
 	package {"fdupes":
 		ensure => installed,	
 	}
