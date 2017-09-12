@@ -74,9 +74,10 @@ class config {
 #	package {"xul-ext-gdata-provider":
 #		ensure => installed,
 #	}
-#	package {"xul-ext-gcontactsync":
+#	package {"xul-ext-lightning":
 #		ensure => installed,
 #	}
+	
 #}
 
 class multimedia {
