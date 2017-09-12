@@ -87,10 +87,6 @@ class multimedia {
 	package {"rhythmbox":
 		ensure => purged,
 	}
-	package {"flashplugin-installer":
-		ensure => purged,
-		require => Package["ubuntu-restricted-extras"],
-	}
 	exec {'configure-libdvd-pkg':
 		command => '/usr/bin/debconf-set-selections <<< "libdvd-pkg libdvd-pkg/post-invoke_hook-install boolean true\nlibdvd-pkg libdvd-pkg/build boolean true"',
 		unless  => '/usr/bin/debconf-get-selections | /bin/grep "libdvd-pkg/post-invoke_hook-install"',
