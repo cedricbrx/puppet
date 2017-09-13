@@ -1,7 +1,7 @@
 node default { 
 	include repository
 	include apt
-	include config
+	include fonts
 	include utilities
 	include games
 	include gnomeshell
@@ -53,7 +53,7 @@ class apt {
 	}
 }
 
-class config {
+class fonts {
 	exec {'accept-msttcorefonts-license':
 		command => '/usr/bin/debconf-set-selections <<< "echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true"',
 		unless  => '/usr/bin/debconf-get-selections | /bin/grep "msttcorefonts/accepted-mscorefonts-eula.*true"',
@@ -79,6 +79,15 @@ class config {
 #	}
 	
 #}
+
+##to change###
+class hardware {
+	if $facts['is_e6410'] {
+		file {'/sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness'
+			content => 2,
+		}
+	}
+}
 
 class multimedia {
 	require apt 
@@ -164,11 +173,16 @@ class utilities {
 	package {"curl":
 		ensure => installed,
 	}
-	package { ["brasero", "nautilus-extension-brasero"]:
-        ensure => $cdrom_present ? {
-            'true'  => installed,
-            default => purged,
-        }
+	if $facts['cdrom_present'] {
+		package { ["brasero", "nautilus-extension-brasero"]:
+			ensure => installed,
+		}
+	}
+	#package { ["brasero", "nautilus-extension-brasero"]:
+        #ensure => $cdrom_present ? {
+        #    'true'  => installed,
+        #    default => purged,
+        #}
     }
 }
 
