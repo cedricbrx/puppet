@@ -85,7 +85,7 @@ class hardware {
 class multimedia {
 	require apt
 	exec {'accept-msttcorefonts-license':
-		command => '/usr/bin/debconf-set-selections <<< "echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true"',
+		command => '/bin/sh -c "echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections"',
 		unless  => '/usr/bin/debconf-get-selections | /bin/grep "msttcorefonts/accepted-mscorefonts-eula.*true"',
 	}
 	package {"ubuntu-restricted-extras":
@@ -96,7 +96,7 @@ class multimedia {
 		ensure => purged,
 	}
 	exec {'configure-libdvd-pkg':
-		command => '/usr/bin/debconf-set-selections <<< "echo libdvd-pkg libdvd-pkg/post-invoke_hook-install boolean true\nlibdvd-pkg libdvd-pkg/build boolean true"',
+		command => '/bin/sh -c "echo -e libdvd-pkg libdvd-pkg/post-invoke_hook-remove boolean false\nlibdvd-pkg libdvd-pkg/build boolean true | debconf-set-selections"',
 		unless  => '/usr/bin/debconf-get-selections | /bin/grep "libdvd-pkg/post-invoke_hook-install"',
 	}
 	package {'libdvd-pkg':
