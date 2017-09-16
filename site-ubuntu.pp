@@ -76,7 +76,7 @@ class fonts {
 ##to change###
 class hardware {
 	if $facts['is_e6410'] {
-		file {'/sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness'
+		file {'/sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness':
 			content => '2',
 		}
 	}
@@ -90,7 +90,7 @@ class multimedia {
 	}
 	package {"ubuntu-restricted-extras":
 		ensure => installed,
-		require => Exec ['accept-msttcorefonts-license']
+		require => Exec['accept-msttcorefonts-license'],
 	}
 	package {"rhythmbox":
 		ensure => purged,
