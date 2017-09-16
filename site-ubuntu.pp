@@ -77,7 +77,7 @@ class fonts {
 class hardware {
 	if $facts['is_e6410'] {
 		file {'/sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness'
-			content => 2,
+			content => '2',
 		}
 	}
 }
