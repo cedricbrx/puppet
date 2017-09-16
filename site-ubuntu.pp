@@ -1,7 +1,6 @@
 node default { 
 	include repository
 	include apt
-	include fonts
 	include utilities
 	include games
 	include gnomeshell
@@ -51,10 +50,6 @@ class apt {
         	ensure  => installed,
 		require => Exec["apt-update"],
 	}
-}
-
-class fonts {
-	
 }
 
 #class firefox {
