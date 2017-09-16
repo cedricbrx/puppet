@@ -181,7 +181,6 @@ class utilities {
         #    'true'  => installed,
         #    default => purged,
         #}
-    }
 }
 
 class synology {
