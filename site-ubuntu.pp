@@ -54,14 +54,7 @@ class apt {
 }
 
 class fonts {
-	exec {'accept-msttcorefonts-license':
-		command => '/usr/bin/debconf-set-selections <<< "echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true"',
-		unless  => '/usr/bin/debconf-get-selections | /bin/grep "msttcorefonts/accepted-mscorefonts-eula.*true"',
-	}
-	package {'ttf-mscorefonts-installer':
-		ensure  => installed,
-		require => Exec['accept-msttcorefonts-license'],
-	}
+	
 }
 
 #class firefox {
@@ -90,9 +83,14 @@ class hardware {
 }
 
 class multimedia {
-	require apt 
+	require apt
+	exec {'accept-msttcorefonts-license':
+		command => '/usr/bin/debconf-set-selections <<< "echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true"',
+		unless  => '/usr/bin/debconf-get-selections | /bin/grep "msttcorefonts/accepted-mscorefonts-eula.*true"',
+	}
 	package {"ubuntu-restricted-extras":
 		ensure => installed,
+		require => Exec ['accept-msttcorefonts-license']
 	}
 	package {"rhythmbox":
 		ensure => purged,
