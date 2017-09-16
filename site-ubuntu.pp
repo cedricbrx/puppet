@@ -167,7 +167,7 @@ class utilities {
 		ensure => installed,
 	}
 	if $facts['cdrom_present'] {
-		package { ["brasero", "nautilus-extension-brasero"]:
+		package {"simpleburn":
 			ensure => installed,
 		}
 	}
