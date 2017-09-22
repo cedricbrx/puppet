@@ -166,16 +166,11 @@ class utilities {
 	package {"curl":
 		ensure => installed,
 	}
-	if $facts['cdrom_present'] {
-		package {"simpleburn":
-			ensure => installed,
-		}
-	}
-	#package { ["brasero", "nautilus-extension-brasero"]:
-        #ensure => $cdrom_present ? {
-        #    'true'  => installed,
-        #    default => purged,
-        #}
+	package { ["brasero", "nautilus-extension-brasero"]:
+        ensure => $cdrom_present ? {
+            'true'  => installed,
+            default => purged,
+        }
 }
 
 class synology {
