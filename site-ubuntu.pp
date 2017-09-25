@@ -77,6 +77,12 @@ class hardware {
 	}
 }
 
+include printers {
+	package {"cups-browsed":
+		ensure => purged,
+	}
+}
+
 class multimedia {
 	require apt
 	exec {'accept-msttcorefonts-license':
