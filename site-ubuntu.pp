@@ -123,6 +123,20 @@ class gnomeshell {
 	package {"gnome-shell-extension-better-volume":
 		ensure => installed,
 	}
+	file {"/etc/dconf/profile/brandenbourger":
+    		content => "user-db:user\nsystem-db:brandenbourger",
+	}
+	file {["/etc/dconf/db/brandenbourger.d", "/etc/dconf/db/brandenbourger.d/locks"]:
+		ensure  => directory,
+	}
+	file {"/etc/dconf/db/brandenbourger.d/00_brandenbourger_dashtodock":
+		source => "https://raw.githubusercontent.com/cedricbrx/puppet/master/etc/dconf/db/brandenbourger.d/00_brandenbourger_dashtodock",
+		require => File["/etc/dconf/db/brandenbourger.d",
+	}
+	file {"/etc/dconf/db/brandenbourger.d/00_brandenbourger_dashtodock":
+		source => "https://raw.githubusercontent.com/cedricbrx/puppet/master/etc/dconf/db/site.d/00_brandenbourger_gnome",
+		require => File["/etc/dconf/db/brandenbourger.d",
+	}
 }
 
 class utilities {
