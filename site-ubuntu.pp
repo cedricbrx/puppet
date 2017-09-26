@@ -131,11 +131,11 @@ class gnomeshell {
 	}
 	file {"/etc/dconf/db/brandenbourger.d/00_brandenbourger_dashtodock":
 		source => "https://raw.githubusercontent.com/cedricbrx/puppet/master/etc/dconf/db/brandenbourger.d/00_brandenbourger_dashtodock",
-		require => File["/etc/dconf/db/brandenbourger.d",
+		require => File["/etc/dconf/db/brandenbourger.d"],
 	}
 	file {"/etc/dconf/db/brandenbourger.d/00_brandenbourger_dashtodock":
 		source => "https://raw.githubusercontent.com/cedricbrx/puppet/master/etc/dconf/db/site.d/00_brandenbourger_gnome",
-		require => File["/etc/dconf/db/brandenbourger.d",
+		require => File["/etc/dconf/db/brandenbourger.d"],
 	}
 }
 
