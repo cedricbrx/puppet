@@ -29,6 +29,14 @@ dynamic-workspaces=false
 enabled-extensions=['ubuntu-appindicators@ubuntu.com', 'ubuntu-dock@ubuntu.com', 'remove-dropdown-arrows@mpdeimos.com', 'drive-menu@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'bettervolume@tudmotu.com']
 favorite-apps=['firefox.desktop', 'thunderbird.desktop','org.gnome.Nautilus.desktop', 'libreoffice-writer.desktop', 'libreoffice-calc.desktop', 'libreoffice-impress.desktop', 'shotwell.desktop']
 
+[org/gnome/shell/extensions/dash-to-dock]
+dock-position='BOTTOM'
+dock-fixed=false
+show-apps-at-top=true
+animate-show-apps=false
+background-opacity=0.33
+extended-height=false
+
 [org/gnome/desktop/calendar]
 show-weekdate=true
 
