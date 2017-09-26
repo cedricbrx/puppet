@@ -15,7 +15,6 @@ click-policy='double'
 enable-animations=false
 clock-show-date=true
 
-
 [org/gnome/desktop/search-providers]
 disabled=['org.gnome.Software.desktop', 'seahorse.desktop', 'org.gnome.Terminal.desktop']
 
@@ -36,3 +35,8 @@ show-weekdate=true
 [org/gnome/software]
 download-updates=false
 allow-updates=false
+
+[org/gnome/desktop/datetime
+automatic-timezone=true
+
+
