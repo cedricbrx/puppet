@@ -7,6 +7,7 @@ node default {
 	include multimedia
 	include printers
 	include hardware
+	include thunderbird
 }
 
 class repository {
