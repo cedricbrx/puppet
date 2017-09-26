@@ -144,6 +144,12 @@ class gnomeshell {
 	#	source => "https://raw.githubusercontent.com/cedricbrx/puppet/master/etc/dconf/db/site.d/00_brandenbourger_language",
 	#	require => File["/etc/dconf/db/brandenbourger.d"],
 	#}
+	file {"/etc/dconf/db/brandenbourger.d/locks/00_brandenbourger":
+		source => "https://raw.githubusercontent.com/cedricbrx/puppet/master/etc/dconf/db/brandenbourger.d/00_brandenbourger",
+		require => File["/etc/dconf/db/brandenbourger.d/locks"],
+	}
+	
+
 }
 
 class utilities {
