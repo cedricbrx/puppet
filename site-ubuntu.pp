@@ -133,12 +133,12 @@ class gnomeshell {
 	file {["/etc/dconf/db/brandenbourger.d", "/etc/dconf/db/brandenbourger.d/locks"]:
 		ensure  => directory,
 	}
-	file {"/etc/dconf/db/brandenbourger.d/00_brandenbourger_dashtodock":
-		source => "https://raw.githubusercontent.com/cedricbrx/puppet/master/etc/dconf/db/brandenbourger.d/00_brandenbourger_dashtodock",
+	file {"/etc/dconf/db/brandenbourger.d/00_brandenbourger":
+		source => "https://raw.githubusercontent.com/cedricbrx/puppet/master/etc/dconf/db/brandenbourger.d/00_brandenbourger",
 		require => File["/etc/dconf/db/brandenbourger.d"],
 	}
-	file {"/etc/dconf/db/brandenbourger.d/00_brandenbourger":
-		source => "https://raw.githubusercontent.com/cedricbrx/puppet/master/etc/dconf/db/site.d/00_brandenbourger",
+	file {"/etc/dconf/db/brandenbourger.d/locks/00_brandenbourger":
+		source => "https://raw.githubusercontent.com/cedricbrx/puppet/master/etc/dconf/db/brandenbourger.d/locks/00_brandenbourger",
 		require => File["/etc/dconf/db/brandenbourger.d"],
 	}
 }
