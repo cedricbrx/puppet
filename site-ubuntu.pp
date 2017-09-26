@@ -55,11 +55,16 @@ class apt {
 	}
 }
 
-#class firefox {
+class firefox {
+	file {"/usr/bin/mozilla-extension-manager":
+		source => https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/mozilla/mozilla-extension-manager
+		ensure => present,
+	}
+	
 #	package {"xul-ext-ubufox":
 #		ensure => purged,
 #	}
-#}
+}
 
 class thunderbird {
 	package {"xul-ext-gdata-provider":
@@ -68,19 +73,17 @@ class thunderbird {
 	package {"xul-ext-lightning":
 		ensure => installed,
 	}
+	exec {"/usr/bin/mozilla-extension-manager --update --system https://addons.mozilla.org/thunderbird/downloads/latest/gcontactsync/addon-8451-latest.xpi":
+		require => File["/usr/bin/mozilla-extension-manager"],
+	}
 }
 
-##to change###
 class hardware {
 	if $is_e6410 == 'true' {
 		file {'/sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness':
 			content => '2',
 			backup => false,
 		}
-		notice('is e6410')
-	}
-	else {
-  		notice('not e6410')
 	}
 }
 
