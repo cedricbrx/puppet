@@ -44,5 +44,5 @@ show-weekdate=true
 download-updates=false
 allow-updates=false
 
-[org/gnome/desktop/datetime
+[org/gnome/desktop/datetime]
 automatic-timezone=true
