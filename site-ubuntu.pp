@@ -73,10 +73,10 @@ class thunderbird {
 ##to change###
 class hardware {
 	if $is_e6410 == 'true' {
-		#file {'/sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness':
-		#	content => '2',
-		#	backup => false,
-		#}
+		file {'/sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness':
+			content => '2',
+			backup => false,
+		}
 		notice('is e6410')
 	}
 	else {
@@ -140,10 +140,16 @@ class gnomeshell {
 	file {"/etc/dconf/db/brandenbourger.d/00_brandenbourger":
 		source => "https://raw.githubusercontent.com/cedricbrx/puppet/master/etc/dconf/db/brandenbourger.d/00_brandenbourger",
 		require => File["/etc/dconf/db/brandenbourger.d"],
+		ensure         => present,
+       		checksum       => sha256,
+       		checksum_value => '9213980f2e3cb4a69c9d7edb2e9b9b21f7b4b64ce25fadfa6681f2f6513b40a2',
 	}
 	file {"/etc/dconf/db/brandenbourger.d/locks/00_brandenbourger":
 		source => "https://raw.githubusercontent.com/cedricbrx/puppet/master/etc/dconf/db/brandenbourger.d/locks/00_brandenbourger",
 		require => File["/etc/dconf/db/brandenbourger.d"],
+		ensure         => present,
+       		checksum       => sha256,
+       		checksum_value => 'e29cb7ff09e5b6c706a11b5feb9a5a1b0059cd58f4d7afc5658ff38ea4e418c4',
 	}
 }
 
