@@ -78,6 +78,7 @@ class hardware {
 }
 
 include printers {
+	require apt
 	package {"cups-browsed":
 		ensure => purged,
 	}
