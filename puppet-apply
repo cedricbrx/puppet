@@ -28,6 +28,7 @@ if [[ "$online_sha512" != "$local_sha512" ]] || [[ "$online_facter_sha512" != "$
 	exit 1
   fi
   puppet apply /etc/puppet/site-$distri.pp
+  sudo dconf update
   if [ $? -eq 0 ]; then
       /usr/bin/logger -i "Puppet has run successfully" -t "puppet-apply"
       exit 0
