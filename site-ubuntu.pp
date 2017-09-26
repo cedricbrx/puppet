@@ -107,6 +107,9 @@ class multimedia {
 		ensure  => installed,
 		require => Exec['configure-libdvd-pkg'],
 	}
+	package {"youtube-dl":
+		ensure => installed,
+	}
 }
 
 class gnomeshell {
@@ -137,6 +140,10 @@ class gnomeshell {
 		source => "https://raw.githubusercontent.com/cedricbrx/puppet/master/etc/dconf/db/site.d/00_brandenbourger_gnome",
 		require => File["/etc/dconf/db/brandenbourger.d"],
 	}
+	#file {"/etc/dconf/db/brandenbourger.d/00_brandenbourger_language":
+	#	source => "https://raw.githubusercontent.com/cedricbrx/puppet/master/etc/dconf/db/site.d/00_brandenbourger_language",
+	#	require => File["/etc/dconf/db/brandenbourger.d"],
+	#}
 }
 
 class utilities {
@@ -229,19 +236,19 @@ class synology {
         content => "$syn_video",
     }
     file {"/usr/share/icons/hicolor/64x64/apps/synology_cameras.png":
-        source         => "https://raw.githubusercontent.com/cedricbrx/puppet-debian/master/files/usr/share/icons/hicolor/64x64/apps/synology_cameras.png",
+        source         => "https://raw.githubusercontent.com/cedricbrx/puppet/master/usr/share/icons/hicolor/64x64/apps/synology_cameras.png",
         ensure         => present,
         checksum       => sha256,
         checksum_value => '29da1525a33cc4f4702d29bcdee9ab89b52bd86b31fa0c2635687e366dbe3825',
     }
     file {"/usr/share/icons/hicolor/64x64/apps/synology_videos.png":
-        source         => "https://raw.githubusercontent.com/cedricbrx/puppet-debian/master/files/usr/share/icons/hicolor/64x64/apps/synology_videos.png",
+        source         => "https://raw.githubusercontent.com/cedricbrx/puppet/master/usr/share/icons/hicolor/64x64/apps/synology_videos.png",
         ensure         => present,
         checksum       => md5,
         checksum_value => '998653e5331a38c68f3164705e6021bd',
     }
     file {"/usr/share/icons/hicolor/64x64/apps/synology_photos.png":
-        source         => "https://raw.githubusercontent.com/cedricbrx/puppet-debian/master/files/usr/share/icons/hicolor/64x64/apps/synology_photos.png",
+        source         => "https://raw.githubusercontent.com/cedricbrx/puppet/master/usr/share/icons/hicolor/64x64/apps/synology_photos.png",
         ensure         => present,
         checksum       => md5,
         checksum_value => '1acddd4b3da197f666451c60bf5f909c',
