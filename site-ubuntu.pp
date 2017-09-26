@@ -77,10 +77,10 @@ class hardware {
 		#	content => '2',
 		#	backup => false,
 		#}
-		notice('is e6410')
+		notice('not e6410')
 	}
 	else {
-  		notice('not e6410')
+  		notice('is e6410')
 	}
 }
 
