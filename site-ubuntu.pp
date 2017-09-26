@@ -73,13 +73,14 @@ class thunderbird {
 ##to change###
 class hardware {
 	if $facts['is_e6410'] {
-		file {'/sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness':
-			content => '2',
-			backup => false,
-		}
+		#file {'/sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness':
+		#	content => '2',
+		#	backup => false,
+		#}
+		notice('is e6410')
 	}
 	else {
-  		warning('not e6410')
+  		notice('not e6410')
 	}
 }
 
