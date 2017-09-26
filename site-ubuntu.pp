@@ -5,6 +5,8 @@ node default {
 	include games
 	include gnomeshell
 	include multimedia
+	include printers
+	include hardware
 }
 
 class repository {
@@ -58,14 +60,14 @@ class apt {
 #	}
 #}
 
-#class thunderbird {
-#	package {"xul-ext-gdata-provider":
-#		ensure => installed,
-#	}
-#	package {"xul-ext-lightning":
-#		ensure => installed,
-#	}
-#}
+class thunderbird {
+	package {"xul-ext-gdata-provider":
+		ensure => installed,
+	}
+	package {"xul-ext-lightning":
+		ensure => installed,
+	}
+}
 
 ##to change###
 class hardware {
@@ -173,10 +175,10 @@ class utilities {
 		ensure => installed,
 	}
 	package { ["brasero", "nautilus-extension-brasero"]:
-        ensure => $cdrom_present ? {
-            'true'  => installed,
-            default => purged,
-        }
+       		ensure => $cdrom_present ? {
+            		'true'  => installed,
+        		default => purged,
+        	}
 	}
 }
 
