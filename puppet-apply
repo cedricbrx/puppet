@@ -2,7 +2,7 @@
 
 set -e
 
-distri=`lsb_release -c | cut -f2`
+distri=`lsb_release -i | cut -f2 | tr '[:upper:]' '[:lower:]'`
 
 if [ $(dpkg-query -W -f='${Status}' curl 2>/dev/null | grep -c "ok installed") -eq 0 ]; then
   echo "Installing curl...."
