@@ -65,7 +65,6 @@ class apt {
 #	package {"xul-ext-lightning":
 #		ensure => installed,
 #	}
-	
 #}
 
 ##to change###
@@ -77,7 +76,7 @@ class hardware {
 	}
 }
 
-include printers {
+class printers {
 	require apt
 	package {"cups-browsed":
 		ensure => purged,
@@ -178,6 +177,7 @@ class utilities {
             'true'  => installed,
             default => purged,
         }
+	}
 }
 
 class synology {
