@@ -72,7 +72,7 @@ class thunderbird {
 
 ##to change###
 class hardware {
-	if $is_e6410 {
+	if $is_e6410 == 'true' {
 		#file {'/sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness':
 		#	content => '2',
 		#	backup => false,
