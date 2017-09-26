@@ -20,7 +20,7 @@ online_facter_sha512=$(curl -s https://raw.githubusercontent.com/cedricbrx/puppe
 local_facter_sha512=`[ -f /var/cache/puppet/facts.d/facter_brandenbourger.sh ] && sha512sum "/var/cache/puppet/facts.d/facter_brandenbourger.sh" | awk '{print $1}' || echo 0`
 
 if [[ "$online_sha512" != "$local_sha512" ]] || [[ "$online_facter_sha512" != "$local_facter_sha512" ]] || [[ `date '+%A'` == "Sunday" ]] ; then
-  wget -N -q https://raw.githubusercontent.com/cedricbrx/puppet/master/site-$distri.pp
+  wget -N -q https://raw.githubusercontent.com/cedricbrx/puppet/master/site-$distri.pp -O /etc/puppet/site-$distri.pp
   wget -N -q https://raw.githubusercontent.com/cedricbrx/puppet/master/facter_brandenbourger.sh -O /var/cache/puppet/facts.d/facter_brandenbourger.sh
   chmod +x /var/cache/puppet/facts.d/facter_brandenbourger.sh
   if [ $? -ne 0 ]; then
