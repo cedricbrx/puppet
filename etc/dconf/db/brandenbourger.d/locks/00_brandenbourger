@@ -1,20 +1,28 @@
-/system/locale/region
+/org/gnome/online-accounts/whitelisted-providers
 
-/org/gnome/nautilus/preferences/sort-directories-first
+/org/gtk/settings/file-chooser/sort-directories-first
+
+org/gnome/gedit/preferences/editor/create-backup-copy
+
 /org/gnome/nautilus/preferences/executable-text-activation
 /org/gnome/nautilus/preferences/click-policy
 
 /org/gnome/desktop/interface/enable-animations
 /org/gnome/desktop/interface/clock-show-date
+/org/gnome/desktop/interface/clock-format
 
-/org/gnome/desktop/input-sources/sources
+/org/gnome/desktop/search-providers/disabled
 
 /org/gnome/desktop/wm/preferences/num-workspaces
-/org/gnome/shell/overrides/dynamic-workspaces
 
-/org/gnome/shell/calendar/show-weekdate
+/org/gnome/shell/overrides/dynamic-workspaces
 
 /org/gnome/shell/enabled-extensions
 /org/gnome/shell/favorite-apps
 
+/org/gnome/desktop/calendar/show-weekdate
+
 /org/gnome/software/download-updates
+/org/gnome/software/allow-updates
+
+/org/gnome/desktop/datetime/automatic-timezone
