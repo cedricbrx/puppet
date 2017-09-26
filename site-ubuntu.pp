@@ -77,6 +77,9 @@ class hardware {
 			content => '2',
 			backup => false,
 		}
+		elsif {
+  			warning('not e6410')
+		}
 	}
 }
 
