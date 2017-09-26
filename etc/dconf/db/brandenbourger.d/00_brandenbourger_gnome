@@ -1,0 +1,38 @@
+[org/gnome/online-accounts]
+whitelisted-providers= ['google']
+
+[org/gtk/settings/file-chooser]
+sort-directories-first= true
+
+[org/gnome/gedit/preferences/editor]
+create-backup-copy=false
+
+[org/gnome/nautilus/preferences]
+executable-text-activation='display'
+click-policy='double'
+
+[org/gnome/desktop/interface]
+enable-animations=false
+clock-show-date=true
+
+
+[org/gnome/desktop/search-providers]
+disabled=['org.gnome.Software.desktop', 'seahorse.desktop', 'org.gnome.Terminal.desktop']
+
+[org/gnome/desktop/wm/preferences]
+num-workspaces=1
+
+[org/gnome/shell/overrides]
+dynamic-workspaces=false
+
+[org/gnome/shell]
+enabled-extensions=['ubuntu-appindicators@ubuntu.com', 'ubuntu-dock@ubuntu.com', 'remove-dropdown-arrows@mpdeimos.com', 'drive-menu@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'bettervolume@tudmotu.com']
+favorite-apps=['firefox.desktop', 'thunderbird.desktop','org.gnome.Nautilus.desktop', 'libreoffice-writer.desktop', 'libreoffice-calc.desktop', 'libreoffice-impress.desktop', 'shotwell.desktop']
+
+
+[org/gnome/desktop/calendar]
+show-weekdate=true
+
+[org/gnome/software]
+download-updates=false
+allow-updates=false
