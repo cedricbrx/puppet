@@ -10,6 +10,7 @@ create-backup-copy=false
 [org/gnome/nautilus/preferences]
 executable-text-activation='display'
 click-policy='double'
+use-experimental-views=false
 
 [org/gnome/desktop/interface]
 enable-animations=false
