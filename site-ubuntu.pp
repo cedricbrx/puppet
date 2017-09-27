@@ -102,7 +102,7 @@ class libreoffice {
 
 class hardware {
 	if $is_e6410 == 'true' {
-		exec {"/bin/echo 2 | /usr/bin/tee /sys/devices/platform/dell-laptop/leds/dell\:\:kbd_backlight/brightness"
+		exec {"/bin/echo 2 | /usr/bin/tee /sys/devices/platform/dell-laptop/leds/dell\:\:kbd_backlight/brightness":
 			user => root,
 		}
 		#file {'/sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness':
