@@ -8,6 +8,7 @@ node default {
 	include printers
 	include hardware
 	include thunderbird
+	include libreoffice
 }
 
 class repository {
@@ -264,15 +265,17 @@ class synology {
 	brand10 => 'https://brandenbourger.quickconnect.to',
 	anne04  => 'https://brandenbourger.quickconnect.to',
 	default => 'https://brandenbourg.quickconnect.to',
-    }   
+    }
+    $prefix='[Desktop Entry]\nTerminal=false\nType=Application\n/usr/share/icons/hicolor/64x64/apps/synology_'
     $title_df='[Desktop Entry]'
     $terminal_df='Terminal=false'
     $type_df='Type=Application'
     $icon_df='Icon=/usr/share/icons/hicolor/64x64/apps/synology_'
     $name_df='Name=Brandenbourger'
     $exec_df='Exec=xdg-open'
-    $syn_camera="$title_df\n$terminal_df\n$type_df\n${icon_df}cameras.png\n$name_df Cameras\n$exec_df $quickconnect_URL/camera"
-    $syn_video="$title_df\n$terminal_df\n$type_df\n${icon_df}videos.png\n$name_df Videos\n$exec_df $quickconnect_URL/video"
+    $syn_video="${prefix}videos.png\n$name_df Videos\n$exec_df $quickconnect_URL/video"
+    #$syn_camera="$title_df\n$terminal_df\n$type_df\n${icon_df}cameras.png\n$name_df Cameras\n$exec_df $quickconnect_URL/camera"
+    #$syn_video="$title_df\n$terminal_df\n$type_df\n${icon_df}videos.png\n$name_df Videos\n$exec_df $quickconnect_URL/video"
     $syn_photo="$title_df\n$terminal_df\n$type_df\n${icon_df}photos.png\n$name_df Photos\n$exec_df $quickconnect_URL/photo"
     package {"synology-cloud-station":
         ensure => installed,
