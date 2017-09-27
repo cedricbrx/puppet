@@ -118,6 +118,7 @@ class hardware {
 		package {"intel-microcode":
 			ensure => purged,
 		}
+	}
 	else {
 		package {"amd64-microcode":
 			ensure => purged,
