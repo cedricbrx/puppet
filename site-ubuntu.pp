@@ -59,11 +59,10 @@ class firefox {
 	file {"/usr/bin/mozilla-extension-manager":
 		source => https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/mozilla/mozilla-extension-manager
 		ensure => present,
+		owner  => root,
+		group  => root,
+		mode   => '755',
 	}
-	
-#	package {"xul-ext-ubufox":
-#		ensure => purged,
-#	}
 }
 
 class thunderbird {
@@ -74,7 +73,20 @@ class thunderbird {
 		ensure => installed,
 	}
 	exec {"/usr/bin/mozilla-extension-manager --update --system https://addons.mozilla.org/thunderbird/downloads/latest/gcontactsync/addon-8451-latest.xpi":
+		user => root,
 		require => File["/usr/bin/mozilla-extension-manager"],
+	}
+}
+
+class libreoffice {
+	require apt
+	file {"/usr/lib/libreoffice/share/registry/brandenbourger.xcd":
+		owner  => root,
+		group  => root,
+		mode   => '644',
+		source => "https://raw.githubusercontent.com/cedricbrx/puppet/master/usr/lib/libreoffice/share/registry/brandenbourger.xcd",
+		checksum => sha256,
+		checksum_value => 'd34fdaad1cef9322b2d3d32384b900ed4a4940a68eff23818a293e1abec0458c',
 	}
 }
 
@@ -82,7 +94,7 @@ class hardware {
 	if $is_e6410 == 'true' {
 		file {'/sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness':
 			content => '2',
-			backup => false,
+			backup  => false,
 		}
 	}
 }
