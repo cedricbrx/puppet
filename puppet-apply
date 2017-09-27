@@ -27,6 +27,7 @@ if [[ "$online_sha512" != "$local_sha512" ]] || [[ "$online_facter_sha512" != "$
   	/usr/bin/logger -i "Puppet has no internet connection, exiting" -t "puppet-apply"
 	exit 1
   fi
+  wget -N -q https://raw.githubusercontent.com/cedricbrx/puppet/master/usr/lib/ruby/vendor_ruby/facter/brandenbourger.rb -O /usr/lib/ruby/vendor_ruby/facter/brandenbourger.rb
   puppet apply /etc/puppet/site-$distri.pp
   touch /etc/dconf/db/brandenbourger.d/locks
   dconf update
