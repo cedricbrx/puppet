@@ -27,3 +27,6 @@ org/gnome/gedit/preferences/editor/create-backup-copy
 /org/gnome/software/allow-updates
 
 /org/gnome/desktop/datetime/automatic-timezone
+
+/org/yorba/shotwell/preferences/files/auto-import
+/org/yorba/shotwell/preferences/files/directory-pattern
