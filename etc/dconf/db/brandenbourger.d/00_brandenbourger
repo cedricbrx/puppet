@@ -47,3 +47,7 @@ allow-updates=false
 
 [org/gnome/desktop/datetime]
 automatic-timezone=true
+
+[org/yorba/shotwell/preferences/files]
+auto-import=true
+directory-pattern='%Y/%m/%d'
