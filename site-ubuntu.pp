@@ -49,6 +49,16 @@ class apt {
 		ensure  => installed,
 		require => Exec["apt-update"],
 	}
+	file {'/etc/apt/apt.conf.d/99brandenbourger':
+		ensure => present,
+		owner   => root,
+		group   => root,
+		mode    => '644',
+		require => Package["unattended-upgrades"],
+		source => 'https://raw.githubusercontent.com/cedricbrx/puppet/master/etc/apt/apt.conf.d/99brandenbourger',
+		checksum => sha256,
+		checksum_value => 'acb63f0a4810573f88db892c6529ec3843a3f3273c47cd55187a07cb8b226a34',
+	}
 	package {"debconf-utils":
         	ensure  => installed,
 		require => Exec["apt-update"],
@@ -95,6 +105,25 @@ class hardware {
 		file {'/sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness':
 			content => '2',
 			backup  => false,
+		}
+		file {'/etc/modprobe.d/wlan_brandenbourger.conf':
+			content => 'options iwlcore led_mode=1',
+			backup  => false,
+		}
+	}
+	if $cpuvendor == 'amd'{
+		package {"amd64-microcode":
+			ensure => installed,
+		}
+		package {"intel-microcode":
+			ensure => purged,
+		}
+	else
+		package {"amd64-microcode":
+			ensure => purged,
+		}
+		package {"intel-microcode":
+			ensure => installed,
 		}
 	}
 }
