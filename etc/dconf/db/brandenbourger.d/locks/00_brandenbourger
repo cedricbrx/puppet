@@ -6,6 +6,7 @@ org/gnome/gedit/preferences/editor/create-backup-copy
 
 /org/gnome/nautilus/preferences/executable-text-activation
 /org/gnome/nautilus/preferences/click-policy
+/org/gnome/nautilus/preferences/use-experimental-views
 
 /org/gnome/desktop/interface/enable-animations
 /org/gnome/desktop/interface/clock-show-date
