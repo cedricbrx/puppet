@@ -267,7 +267,7 @@ class synology {
 	anne04  => 'https://brandenbourger.quickconnect.to',
 	default => 'https://brandenbourg.quickconnect.to',
     }
-    $prefix='[Desktop Entry]\nTerminal=false\nType=Application\n/usr/share/icons/hicolor/64x64/apps/synology_'
+    $prefix="[Desktop Entry]\nTerminal=false\nType=Application\nIcon=/usr/share/icons/hicolor/64x64/apps/synology_"
     $title_df='[Desktop Entry]'
     $terminal_df='Terminal=false'
     $type_df='Type=Application'
