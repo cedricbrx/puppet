@@ -166,20 +166,16 @@ class gnomeshell {
 	package {"gnome-power-manager":
 		ensure => purged,
 	}
-	package {"gnome-shell-extensions":
-		ensure => installed,
-	}
-	package {"gnome-shell-extension-remove-dropdown-arrows":
-		ensure => installed,
-	}
-	package {"gnome-shell-extension-better-volume":
+	package {["gnome-shell-extensions","gnome-shell-extension-remove-dropdown-arrows","gnome-shell-extension-better-volume"]:
 		ensure => installed,
 	}
 	file {"/etc/dconf/profile/brandenbourger":
     		content => "user-db:user\nsystem-db:brandenbourger",
+		require => Package["gnome-shell-extensions"],
 	}
 	file {["/etc/dconf/db/brandenbourger.d", "/etc/dconf/db/brandenbourger.d/locks"]:
 		ensure  => directory,
+		require => File["/etc/dconf/profile/brandenbourger"],
 	}
 	file {"/etc/dconf/db/brandenbourger.d/00_brandenbourger":
 		source => "https://raw.githubusercontent.com/cedricbrx/puppet/master/etc/dconf/db/brandenbourger.d/00_brandenbourger",
