@@ -17,7 +17,7 @@ Facter.add(:is_e6410) do
     if Facter::Util::Config.is_windows?
       'windows'
     else
-	    Facter::Core::Execution.exec("grep -qi amd /sys/devices/virtual/dmi/id/product_name && echo 'true' || echo 'false'")
+	    Facter::Core::Execution.exec("grep -qi E6410 /sys/devices/virtual/dmi/id/product_name && echo 'true' || echo 'false'")
     end
   end
 end
