@@ -9,6 +9,7 @@ node default {
 	include hardware
 	include thunderbird
 	include libreoffice
+	include synology
 }
 
 class repository {
@@ -274,29 +275,19 @@ class synology {
     $name_df='Name=Brandenbourger'
     $exec_df='Exec=xdg-open'
     $syn_video="${prefix}videos.png\n$name_df Videos\n$exec_df $quickconnect_URL/video"
-    #$syn_camera="$title_df\n$terminal_df\n$type_df\n${icon_df}cameras.png\n$name_df Cameras\n$exec_df $quickconnect_URL/camera"
     #$syn_video="$title_df\n$terminal_df\n$type_df\n${icon_df}videos.png\n$name_df Videos\n$exec_df $quickconnect_URL/video"
     $syn_photo="$title_df\n$terminal_df\n$type_df\n${icon_df}photos.png\n$name_df Photos\n$exec_df $quickconnect_URL/photo"
-    package {"synology-cloud-station":
-        ensure => installed,
-    }
-    package {"synology-assistant":
-        ensure => installed,
-    }
-    file {"/usr/share/applications/brandenbourger-cameras.desktop":
-        content => "$syn_camera",
-    }
+    #package {"synology-cloud-station":
+    #    ensure => installed,
+    #}
+    #package {"synology-assistant":
+    #    ensure => installed,
+    #}
     file {"/usr/share/applications/brandenbourger-photos.desktop":
         content => "$syn_photo",
     }
     file {"/usr/share/applications/brandenbourger-videos.desktop":
         content => "$syn_video",
-    }
-    file {"/usr/share/icons/hicolor/64x64/apps/synology_cameras.png":
-        source         => "https://raw.githubusercontent.com/cedricbrx/puppet/master/usr/share/icons/hicolor/64x64/apps/synology_cameras.png",
-        ensure         => present,
-        checksum       => sha256,
-        checksum_value => '29da1525a33cc4f4702d29bcdee9ab89b52bd86b31fa0c2635687e366dbe3825',
     }
     file {"/usr/share/icons/hicolor/64x64/apps/synology_videos.png":
         source         => "https://raw.githubusercontent.com/cedricbrx/puppet/master/usr/share/icons/hicolor/64x64/apps/synology_videos.png",
