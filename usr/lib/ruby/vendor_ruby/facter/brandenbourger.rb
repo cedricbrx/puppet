@@ -33,3 +33,15 @@ Facter.add(:cpu_vendor) do
     end
   end
 end
+
+Facter.add(:mac_gateway) do
+  setcode do
+    require 'facter/util/config'
+
+    if Facter::Util::Config.is_windows?
+      'windows'
+    else
+	    Facter::Core::Execution.exec("ip neigh | grep $(ip -4 route list 0/0 | cut -d' ' -f3) | cut -d' ' -f5 | tr '[a-f]' '[A-F]'")
+    end
+  end
+end
