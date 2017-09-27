@@ -97,8 +97,6 @@ class libreoffice {
 		group  => root,
 		mode   => '644',
 		source => "https://raw.githubusercontent.com/cedricbrx/puppet/master/usr/lib/libreoffice/share/registry/brandenbourger.xcd",
-		checksum => sha256,
-		checksum_value => 'd34fdaad1cef9322b2d3d32384b900ed4a4940a68eff23818a293e1abec0458c',
 	}
 }
 
