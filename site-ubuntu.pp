@@ -111,7 +111,7 @@ class hardware {
 			backup  => false,
 		}
 	}
-	if $cpuvendor == 'amd'{
+	if $cpu_vendor == 'amd'{
 		package {"amd64-microcode":
 			ensure => installed,
 		}
