@@ -45,16 +45,11 @@ xmlns:oor="http://openoffice.org/2001/registry">
        <value>lb-LU</value>
      </prop>
   </oor:component-data>
-   <oor:component-data xmlns:install="http://openoffice.org/2004/installation" oor:name="L10N" oor:package="org.openoffice.Office">
-     <node oor:name="Writer">
-       <node oor:name="Layout">
-         <prop oor:name="MeasureUnit" oor:op="fuse" oor:finalized="true">
+  <oor:component-data xmlns:install="http://openoffice.org/2004/installation" oor:name="Writer" oor:package="org.openoffice.Office">
+    <node oor:name="Layout">
+      <prop oor:name="MeasureUnit" oor:op="fuse" oor:finalized="true">
         <value>2</value>
-       </prop>
-     </prop>
+      </prop>
     </node>  
   </oor:component-data>
-  
-  
-  
 </oor:data>
