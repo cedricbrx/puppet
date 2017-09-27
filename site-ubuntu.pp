@@ -66,13 +66,13 @@ class apt {
 }
 
 class firefox {
-	file {"/usr/bin/mozilla-extension-manager":
-		source => 'https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/mozilla/mozilla-extension-manager',
-		ensure => present,
-		owner  => root,
-		group  => root,
-		mode   => '755',
-	}
+	#file {"/usr/bin/mozilla-extension-manager":
+	#	source => 'https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/mozilla/mozilla-extension-manager',
+	#	ensure => present,
+	#	owner  => root,
+	#	group  => root,
+	#	mode   => '755',
+	#}
 }
 
 class thunderbird {
@@ -82,10 +82,10 @@ class thunderbird {
 	package {"xul-ext-lightning":
 		ensure => installed,
 	}
-	exec {"/usr/bin/mozilla-extension-manager --update --system https://addons.mozilla.org/thunderbird/downloads/latest/gcontactsync/addon-8451-latest.xpi":
-		user => root,
-		require => File["/usr/bin/mozilla-extension-manager"],
-	}
+	#exec {"/usr/bin/mozilla-extension-manager --update --system https://addons.mozilla.org/thunderbird/downloads/latest/gcontactsync/addon-8451-latest.xpi":
+	#	user => root,
+	#	require => File["/usr/bin/mozilla-extension-manager"],
+	#}
 }
 
 class libreoffice {
