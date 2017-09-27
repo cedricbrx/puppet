@@ -17,9 +17,19 @@ Facter.add(:is_e6410) do
     if Facter::Util::Config.is_windows?
       'windows'
     else
-	    Facter::Core::Execution.exec("grep -qi e6410 /sys/devices/virtual/dmi/id/product_name && echo 'true' || echo 'false'")
+	    Facter::Core::Execution.exec("grep -qi amd /sys/devices/virtual/dmi/id/product_name && echo 'true' || echo 'false'")
     end
   end
 end
 
+Facter.add(:cpu_vendor) do
+  setcode do
+    require 'facter/util/config'
 
+    if Facter::Util::Config.is_windows?
+      'windows'
+    else
+	    Facter::Core::Execution.exec("grep -qi AMD /proc/cpuinfo && echo 'amd' || echo 'intel'")
+    end
+  end
+end
