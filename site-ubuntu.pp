@@ -104,13 +104,10 @@ class hardware {
 	if $is_e6410 == 'true' {
 		exec {"/bin/echo 2 | /usr/bin/tee /sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness":
 			user => root,
+			unless => "/bin/grep 2 /sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness",
 		}
-		#file {'/sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness':
-		#	content => '2',
-		#	backup  => false,
-		#}
 		file {'/etc/modprobe.d/wlan_brandenbourger.conf':
-			content => 'options iwlcore led_mode=1',
+			content => 'options iwlwifi led_mode=1',
 			backup  => false,
 		}
 	}
