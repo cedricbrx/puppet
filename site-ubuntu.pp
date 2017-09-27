@@ -102,10 +102,13 @@ class libreoffice {
 
 class hardware {
 	if $is_e6410 == 'true' {
-		file {'/sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness':
-			content => '2',
-			backup  => false,
+		exec {"/bin/echo 2 | /usr/bin/tee /sys/devices/platform/dell-laptop/leds/dell\:\:kbd_backlight/brightness"
+			user => root,
 		}
+		#file {'/sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness':
+		#	content => '2',
+		#	backup  => false,
+		#}
 		file {'/etc/modprobe.d/wlan_brandenbourger.conf':
 			content => 'options iwlcore led_mode=1',
 			backup  => false,
