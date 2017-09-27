@@ -45,3 +45,15 @@ Facter.add(:mac_gateway) do
     end
   end
 end
+
+Facter.add(:pc_owner) do
+  setcode do
+    require 'facter/util/config'
+
+    if Facter::Util::Config.is_windows?
+      'windows'
+    else
+	    Facter::Core::Execution.exec("ls /home/ | grep -v 'lost+found'")
+    end
+  end
+end
