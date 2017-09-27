@@ -1,4 +1,0 @@
-[org/gnome/shell/extensions/dash-to-dock]
-dock-position='BOTTOM'
-show-apps-at-top=true
-animate-show-apps=false
