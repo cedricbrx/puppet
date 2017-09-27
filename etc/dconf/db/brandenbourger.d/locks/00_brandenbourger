@@ -30,3 +30,4 @@ org/gnome/gedit/preferences/editor/create-backup-copy
 
 /org/yorba/shotwell/preferences/files/auto-import
 /org/yorba/shotwell/preferences/files/directory-pattern
+/org/yorba/shotwell/preferences/files/import-dir
