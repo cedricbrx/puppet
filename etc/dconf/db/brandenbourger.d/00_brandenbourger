@@ -51,3 +51,4 @@ automatic-timezone=true
 [org/yorba/shotwell/preferences/files]
 auto-import=true
 directory-pattern='%Y/%m/%d'
+import-dir='/home/brand10/Pictures'
