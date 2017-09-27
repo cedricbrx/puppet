@@ -136,7 +136,9 @@ class printers {
 	package {"hplip-gui":
 		ensure => installed,
 	}
-	
+	if $mac_gateway == 'XXX'{
+			notice ('printer')
+	}
 }
 
 class multimedia {
