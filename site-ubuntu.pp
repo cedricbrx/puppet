@@ -33,7 +33,7 @@ class repository {
 	#	group   => root,
 	#	mode    => '644',
 	#	require => File['/etc/apt/trusted.gpg.d/brandenbourger.gpg'],
-	#	content => 'deb https://raw.githubusercontent.com/cedricbrx/packages/master/ artful main',
+	#	content => "deb https://raw.githubusercontent.com/cedricbrx/packages/master/ $lsbdistcodename main",
 	#}
 	package {'apt-transport-https':
 		ensure => installed,
