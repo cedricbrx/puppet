@@ -21,3 +21,5 @@ Facter.add(:is_e6410) do
     end
   end
 end
+
+
