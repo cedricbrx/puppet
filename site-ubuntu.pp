@@ -67,7 +67,7 @@ class apt {
 
 class firefox {
 	file {"/usr/bin/mozilla-extension-manager":
-		source => https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/mozilla/mozilla-extension-manager
+		source => 'https://raw.githubusercontent.com/NicolasBernaerts/ubuntu-scripts/master/mozilla/mozilla-extension-manager',
 		ensure => present,
 		owner  => root,
 		group  => root,
