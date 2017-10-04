@@ -14,28 +14,21 @@ if [ $(dpkg-query -W -f='${Status}' puppet 2>/dev/null | grep -c "ok installed")
   sudo apt-get install puppet
 fi
 
-online_sha512=$(curl -s https://raw.githubusercontent.com/cedricbrx/puppet/master/site-$distri.pp | sha512sum | awk '{print $1}')
-local_sha512=`[ -f /etc/puppet/site-$distri.pp ] && sha512sum "/etc/puppet/site-$distri.pp" | awk '{print $1}' || echo 0`
-online_facter_sha512=$(curl -s https://raw.githubusercontent.com/cedricbrx/puppet/master/facter_brandenbourger.sh | sha512sum | awk '{print $1}')
-local_facter_sha512=`[ -f /var/cache/puppet/facts.d/facter_brandenbourger.sh ] && sha512sum "/var/cache/puppet/facts.d/facter_brandenbourger.sh" | awk '{print $1}' || echo 0`
-
-if [[ "$online_sha512" != "$local_sha512" ]] || [[ "$online_facter_sha512" != "$local_facter_sha512" ]] || [[ `date '+%A'` == "Sunday" ]] ; then
-  wget -N -q https://raw.githubusercontent.com/cedricbrx/puppet/master/site-$distri.pp -O /etc/puppet/site-$distri.pp
-  wget -N -q https://raw.githubusercontent.com/cedricbrx/puppet/master/facter_brandenbourger.sh -O /var/cache/puppet/facts.d/facter_brandenbourger.sh
-  chmod +x /var/cache/puppet/facts.d/facter_brandenbourger.sh
-  if [ $? -ne 0 ]; then
-  	/usr/bin/logger -i "Puppet has no internet connection, exiting" -t "puppet-apply"
+wget -N -q https://raw.githubusercontent.com/cedricbrx/puppet/master/site-$distri.pp -O /etc/puppet/site-$distri.pp
+wget -N -q https://raw.githubusercontent.com/cedricbrx/puppet/master/facter_brandenbourger.sh -O /var/cache/puppet/facts.d/facter_brandenbourger.sh
+chmod +x /var/cache/puppet/facts.d/facter_brandenbourger.sh
+if [ $? -ne 0 ]; then
+	/usr/bin/logger -i "Puppet has no internet connection, exiting" -t "puppet-apply"
 	exit 1
-  fi
-  wget -N -q https://raw.githubusercontent.com/cedricbrx/puppet/master/usr/lib/ruby/vendor_ruby/facter/brandenbourger.rb -O /usr/lib/ruby/vendor_ruby/facter/brandenbourger.rb
-  puppet apply /etc/puppet/site-$distri.pp
-  touch /etc/dconf/db/brandenbourger.d/locks
-  dconf update
-  if [ $? -eq 0 ]; then
-      /usr/bin/logger -i "Puppet has run successfully" -t "puppet-apply"
-      exit 0
-  else
-      /usr/bin/logger -i "Puppet has run into an error, please run Puppet manually" -t "puppet-apply"
-      exit 1
-  fi
+fi
+wget -N -q https://raw.githubusercontent.com/cedricbrx/puppet/master/usr/lib/ruby/vendor_ruby/facter/brandenbourger.rb -O /usr/lib/ruby/vendor_ruby/facter/brandenbourger.rb
+puppet apply /etc/puppet/site-$distri.pp
+touch /etc/dconf/db/brandenbourger.d/locks
+dconf update
+if [ $? -eq 0 ]; then
+    /usr/bin/logger -i "Puppet has run successfully" -t "puppet-apply"
+    exit 0
+else
+    /usr/bin/logger -i "Puppet has run into an error, please run Puppet manually" -t "puppet-apply"
+    exit 1
 fi
