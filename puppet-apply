@@ -15,8 +15,6 @@ if [ $(dpkg-query -W -f='${Status}' puppet 2>/dev/null | grep -c "ok installed")
 fi
 
 wget -N -q https://raw.githubusercontent.com/cedricbrx/puppet/master/site-$distri.pp -O /etc/puppet/site-$distri.pp
-wget -N -q https://raw.githubusercontent.com/cedricbrx/puppet/master/facter_brandenbourger.sh -O /var/cache/puppet/facts.d/facter_brandenbourger.sh
-chmod +x /var/cache/puppet/facts.d/facter_brandenbourger.sh
 if [ $? -ne 0 ]; then
 	/usr/bin/logger -i "Puppet has no internet connection, exiting" -t "puppet-apply"
 	exit 1
