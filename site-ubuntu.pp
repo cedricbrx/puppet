@@ -168,9 +168,9 @@ class multimedia {
 	package {"youtube-dl":
 		ensure => installed,
 	}
-	package {"gimp":
-		ensure => installed,
-	}
+	#package {"gimp":
+	#	ensure => installed,
+	#}
 }
 
 class gnomeshell {
