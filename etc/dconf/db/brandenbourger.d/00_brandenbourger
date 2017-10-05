@@ -36,7 +36,7 @@ dock-fixed=false
 show-apps-at-top=true
 animate-show-apps=false
 background-opacity=0.33
-extended-height=false
+extend-height=false
 
 [org/gnome/desktop/calendar]
 show-weekdate=true
