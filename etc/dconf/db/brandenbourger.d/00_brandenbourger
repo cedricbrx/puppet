@@ -24,6 +24,9 @@ clock-format='24h'
 [org/gnome/desktop/search-providers]
 disabled=['org.gnome.Software.desktop', 'seahorse.desktop', 'org.gnome.Terminal.desktop']
 
+[org/gnome/desktop/app-folders]
+folder-children=['']
+
 [org/gnome/desktop/wm/preferences]
 num-workspaces=1
 
