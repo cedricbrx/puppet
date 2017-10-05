@@ -11,6 +11,8 @@ create-backup-copy=false
 executable-text-activation='display'
 click-policy='double'
 use-experimental-views=false
+home-icon-visible=false
+volumes-visible=false
 
 [org/gnome/desktop/interface]
 enable-animations=false
