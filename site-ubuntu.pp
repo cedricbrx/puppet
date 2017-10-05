@@ -193,7 +193,7 @@ class gnomeshell {
 	}
 	file {["/etc/dconf/db/brandenbourger.d", "/etc/dconf/db/brandenbourger.d/locks"]:
 		ensure  => directory,
-		require => File["/etc/dconf/profile/brandenbourger"],
+		require => File["/etc/dconf/profile/user"],
 	}
 	file {"/etc/dconf/db/brandenbourger.d/00_brandenbourger":
 		source         => "https://raw.githubusercontent.com/cedricbrx/puppet/master/etc/dconf/db/brandenbourger.d/00_brandenbourger",
