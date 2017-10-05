@@ -36,6 +36,9 @@ enabled-extensions=['ubuntu-appindicators@ubuntu.com', 'ubuntu-dock@ubuntu.com',
 favorite-apps=['firefox.desktop', 'thunderbird.desktop','org.gnome.Nautilus.desktop', 'libreoffice-writer.desktop', 'libreoffice-calc.desktop', 'libreoffice-impress.desktop', 'shotwell.desktop']
 app-picker-view=1
 
+[org/gnome/mutter]
+dynamic-workspaces=false
+
 [org/gnome/shell/extensions/dash-to-dock]
 dock-position='BOTTOM'
 dock-fixed=false
