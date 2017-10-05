@@ -14,6 +14,9 @@ org/gnome/gedit/preferences/editor/create-backup-copy
 
 /org/gnome/desktop/search-providers/disabled
 
+/org/gnome/nautilus/desktop/home-icon-visible
+/org/gnome/nautilus/desktop/volumes-visible
+
 /org/gnome/desktop/wm/preferences/num-workspaces
 
 /org/gnome/shell/overrides/dynamic-workspaces
@@ -31,3 +34,5 @@ org/gnome/gedit/preferences/editor/create-backup-copy
 /org/yorba/shotwell/preferences/files/auto-import
 /org/yorba/shotwell/preferences/files/directory-pattern
 /org/yorba/shotwell/preferences/files/import-dir
+
+/org/gnome/mutter/dynamic-workspaces
