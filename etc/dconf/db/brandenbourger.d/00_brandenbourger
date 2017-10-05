@@ -23,12 +23,16 @@ disabled=['org.gnome.Software.desktop', 'seahorse.desktop', 'org.gnome.Terminal.
 [org/gnome/desktop/wm/preferences]
 num-workspaces=1
 
+[org/gnome/terminal/legacy
+default-show-menubar=false
+
 [org/gnome/shell/overrides]
 dynamic-workspaces=false
 
 [org/gnome/shell]
 enabled-extensions=['ubuntu-appindicators@ubuntu.com', 'ubuntu-dock@ubuntu.com', 'remove-dropdown-arrows@mpdeimos.com', 'drive-menu@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'bettervolume@tudmotu.com']
 favorite-apps=['firefox.desktop', 'thunderbird.desktop','org.gnome.Nautilus.desktop', 'libreoffice-writer.desktop', 'libreoffice-calc.desktop', 'libreoffice-impress.desktop', 'shotwell.desktop']
+app-picker-view=1
 
 [org/gnome/shell/extensions/dash-to-dock]
 dock-position='BOTTOM'
