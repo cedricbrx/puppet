@@ -37,6 +37,7 @@ show-apps-at-top=true
 animate-show-apps=false
 background-opacity=0.33
 extend-height=false
+transparency-mode='FIXED'
 
 [org/gnome/desktop/calendar]
 show-weekdate=true
