@@ -168,9 +168,15 @@ class multimedia {
 	package {"youtube-dl":
 		ensure => installed,
 	}
-	#package {"gimp":
-	#	ensure => installed,
-	#}
+	package { ["brasero", "nautilus-extension-brasero"]:
+       		ensure => $cdrom_present ? {
+            		'true'  => installed,
+        		default => purged,
+        	}
+	}
+	package {"gimp":
+		ensure => installed,
+	}
 }
 
 class gnomeshell {
@@ -181,7 +187,7 @@ class gnomeshell {
 	package {["gnome-shell-extensions","gnome-shell-extension-remove-dropdown-arrows","gnome-shell-extension-better-volume"]:
 		ensure => installed,
 	}
-	file {"/etc/dconf/profile/brandenbourger":
+	file {"/etc/dconf/profile/user":
     		content => "user-db:user\nsystem-db:brandenbourger",
 		require => Package["gnome-shell-extensions"],
 	}
@@ -208,7 +214,10 @@ class gnomeshell {
 class utilities {
 	require apt
 	package {"deja-dup":
-		ensure => purged,
+		ensure => $pc_owner ? {
+            		'alex'  => installed,
+        		default => purged,
+        	}
 	}
 	package {"remmina":
 		ensure => purged,
@@ -254,12 +263,6 @@ class utilities {
 	}
 	package {"curl":
 		ensure => installed,
-	}
-	package { ["brasero", "nautilus-extension-brasero"]:
-       		ensure => $cdrom_present ? {
-            		'true'  => installed,
-        		default => purged,
-        	}
 	}
 }
 
