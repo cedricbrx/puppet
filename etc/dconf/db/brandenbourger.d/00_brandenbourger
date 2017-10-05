@@ -30,7 +30,7 @@ folder-children=['']
 [org/gnome/desktop/wm/preferences]
 num-workspaces=1
 
-[org/gnome/terminal/legacy
+[org/gnome/terminal/legacy]
 default-show-menubar=false
 
 [org/gnome/shell/overrides]
