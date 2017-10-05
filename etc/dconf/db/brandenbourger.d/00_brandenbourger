@@ -11,6 +11,8 @@ create-backup-copy=false
 executable-text-activation='display'
 click-policy='double'
 use-experimental-views=false
+
+[org/gnome/nautilus/desktop]
 home-icon-visible=false
 volumes-visible=false
 
