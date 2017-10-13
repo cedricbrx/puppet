@@ -23,6 +23,7 @@ org/gnome/gedit/preferences/editor/create-backup-copy
 
 /org/gnome/shell/enabled-extensions
 /org/gnome/shell/favorite-apps
+/org/gnome/shell/app-picker-view
 
 /org/gnome/desktop/calendar/show-weekdate
 
@@ -36,3 +37,5 @@ org/gnome/gedit/preferences/editor/create-backup-copy
 /org/yorba/shotwell/preferences/files/import-dir
 
 /org/gnome/mutter/dynamic-workspaces
+
+/org/gnome/desktop/app-folders/folder-children
