@@ -267,6 +267,9 @@ class utilities {
 	package {"curl":
 		ensure => installed,
 	}
+	package {"dconf-editor":
+		ensure => installed,
+	}
 }
 
 class synology {
