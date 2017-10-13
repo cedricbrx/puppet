@@ -67,3 +67,13 @@ automatic-timezone=true
 auto-import=true
 directory-pattern='%Y/%m/%d'
 import-dir='/home/brand10/Pictures'
+
+[org/yorba/shotwell/plugins/enable-states]
+dataimports-fspot=false
+publishing-facebook=false
+publishing-flickr=false
+publishing-picasa=false
+publishing-piwigo=false
+publishing-youtube=false
+
+
