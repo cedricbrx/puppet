@@ -40,6 +40,7 @@ dynamic-workspaces=false
 enabled-extensions=['ubuntu-appindicators@ubuntu.com', 'ubuntu-dock@ubuntu.com', 'remove-dropdown-arrows@mpdeimos.com', 'drive-menu@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'bettervolume@tudmotu.com']
 favorite-apps=['firefox.desktop', 'thunderbird.desktop','org.gnome.Nautilus.desktop', 'libreoffice-writer.desktop', 'libreoffice-calc.desktop', 'libreoffice-impress.desktop', 'shotwell.desktop']
 app-picker-view=1
+enable-hot-corners=false
 
 [org/gnome/mutter]
 dynamic-workspaces=false
