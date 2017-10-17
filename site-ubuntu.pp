@@ -187,6 +187,9 @@ class gnomeshell {
 	package {"gnome-power-manager":
 		ensure => purged,
 	}
+	package {"example-content":
+		ensure => purged,
+	}
 	package {["gnome-shell-extensions","gnome-shell-extension-remove-dropdown-arrows","gnome-shell-extension-better-volume"]:
 		ensure => installed,
 	}
