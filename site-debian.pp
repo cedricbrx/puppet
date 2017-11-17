@@ -24,6 +24,12 @@ class repository {
 		checksum       => sha256,
 		checksum_value => '1f36daf59e021d10d53d9aedb5d784db59ce2d73c01594352eb9c6b809a70161',
 	}
+	file {'/etc/apt/trusted.gpg.d/signal.gpg':
+		source         => 'https://github.com/cedricbrx/puppet/raw/master/etc/apt/trusted.gpg.d/signal.gpg',
+		ensure         => present,
+		checksum       => sha256,
+		checksum_value => '1f36daf59e021d10d53d9aedb5d784db59ce2d73c01594352eb9c6b809a70161',
+	}
 	file {'/etc/apt/sources.list':
 		ensure => present,
 		owner   => root,
