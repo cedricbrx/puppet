@@ -31,6 +31,14 @@ class repository {
 		mode    => '644',
 		content => "$mirror ${lsbdistcodename} $packages\n$security ${lsbdistcodename}/updates $packages\n$mirror ${lsbdistcodename}-updates $packages",
 	}
+	file {'/etc/apt/sources.list.d/signal.list':
+		ensure => present,
+		ensure => present,
+		owner   => root,
+		group   => root,
+		mode    => '644',
+		content => "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main",
+	}	
 	#file {'/etc/apt/sources.list.d/brandenbourger.list':
 	#	ensure  => present,
 	#	owner   => root,
