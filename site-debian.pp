@@ -15,9 +15,9 @@ node default {
 }
 
 class repository {
-	$mirror="deb http://lu.archive.ubuntu.com/ubuntu/"
-	$security="deb http://security.ubuntu.com/ubuntu/"
-	$packages="main restricted universe multiverse"
+	$mirror="deb http://debian.mirror.root.lu/debian/"
+	$security="deb http://security.debian.org/"
+	$packages="main contrib non-free"
 	file {'/etc/apt/trusted.gpg.d/brandenbourger.gpg':
 		source         => 'https://github.com/cedricbrx/puppet/raw/master/etc/apt/trusted.gpg.d/brandenbourger.gpg',
 		ensure         => present,
@@ -29,7 +29,7 @@ class repository {
 		owner   => root,
 		group   => root,
 		mode    => '644',
-		content => "$mirror ${lsbdistcodename} $packages\n$security ${lsbdistcodename}-security $packages\n$mirror ${lsbdistcodename}-updates $packages",
+		content => "$mirror ${lsbdistcodename} $packages\n$security ${lsbdistcodename}/updates $packages\n$mirror ${lsbdistcodename}-updates $packages",
 	}
 	#file {'/etc/apt/sources.list.d/brandenbourger.list':
 	#	ensure  => present,
