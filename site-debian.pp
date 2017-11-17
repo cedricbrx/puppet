@@ -153,8 +153,8 @@ class multimedia {
 		command => '/bin/sh -c "echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections"',
 		unless  => '/usr/bin/debconf-get-selections | /bin/grep "msttcorefonts/accepted-mscorefonts-eula.*true"',
 	}
-	package {"ubuntu-restricted-extras":
-		ensure => installed,
+	package {"ttf-mscorefonts-installer":
+		ensure  => installed,
 		require => Exec['accept-msttcorefonts-license'],
 	}
 	package {"rhythmbox":
@@ -178,9 +178,6 @@ class multimedia {
         	}
 	}
 	package {"gimp":
-		ensure => installed,
-	}
-	package {"mpv":
 		ensure => installed,
 	}
 }
@@ -224,28 +221,13 @@ class gnomeshell {
 
 class utilities {
 	require apt
-	package {"deja-dup":
-		ensure => $pc_owner ? {
-            		'alex'  => installed,
-        		default => purged,
-        	}
-	}
 	package {"remmina":
 		ensure => purged,
 	}
 	package {"yelp":
 		ensure => purged,
 	}
-	package {"xdiagnose":
-		ensure => purged,
-	}
 	package {"transmission-common":
-		ensure => purged,
-	}
-	package {"onboard-common":
-		ensure => purged,
-	}
-	package {"ubuntu-web-launchers":
 		ensure => purged,
 	}
 	package {"keepassx":
@@ -325,16 +307,6 @@ class synology {
 
 class games {
 	require apt
-	package {"gnome-mines":
+	package {"gnome-games":
 		ensure => purged,
-	}
-	package {"aisleriot":
-		ensure => purged,
-	}
-	package {"gnome-mahjongg":
-		ensure => purged,
-	}
-	package {"gnome-sudoku":
-		ensure => purged,
-	}
 }
