@@ -116,6 +116,12 @@ class hardware {
 			backup  => false,
 		}
 	}
+	if $is_gt440 == 'true' {
+		file {'/etc/tmpfiles.d/brandenbourger-nouveau.conf':
+			content => 
+			backup => false,
+		}
+	}
 	if $cpu_vendor == 'amd'{
 		package {"amd64-microcode":
 			ensure => installed,
@@ -181,7 +187,7 @@ class multimedia {
 		ensure => installed,
 	}
 	package {"mpv":
-		ensure => installed,
+		ensure => purged,
 	}
 }
 
