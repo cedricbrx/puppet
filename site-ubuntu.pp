@@ -106,7 +106,7 @@ class libreoffice {
 }
 
 class hardware {
-	if $is_e6410 == 'true' {
+	if $pc_model == 'e6410' {
 		exec {"/bin/echo 2 | /usr/bin/tee /sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness":
 			user => root,
 			unless => "/bin/grep 2 /sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness",
@@ -118,7 +118,7 @@ class hardware {
 	}
 	if $graphic_model == 'gf106' {
 		file {'/etc/tmpfiles.d/brandenbourger-nouveau.conf':
-			content => "w /sys//// 2\n 
+			content => "w /sys//// 2\n "
 			backup => false,
 		}
 	}
