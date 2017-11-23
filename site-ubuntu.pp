@@ -116,9 +116,9 @@ class hardware {
 			backup  => false,
 		}
 	}
-	if $is_gt440 == 'true' {
+	if $graphic_model == 'gf106' {
 		file {'/etc/tmpfiles.d/brandenbourger-nouveau.conf':
-			content => 
+			content => "w /sys//// 2\n 
 			backup => false,
 		}
 	}
