@@ -10,14 +10,14 @@ Facter.add(:cdrom_present) do
   end
 end
 
-Facter.add(:is_e6410) do
+Facter.add(:pc_model) do
   setcode do
     require 'facter/util/config'
 
     if Facter::Util::Config.is_windows?
       'windows'
     else
-	    Facter::Core::Execution.exec("grep -qi E6410 /sys/devices/virtual/dmi/id/product_name && echo 'true' || echo 'false'")
+	    Facter::Core::Execution.exec("cat /sys/devices/virtual/dmi/id/product_name")
     end
   end
 end
