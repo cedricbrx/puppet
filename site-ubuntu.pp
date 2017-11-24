@@ -107,10 +107,14 @@ class libreoffice {
 
 class hardware {
 	if $pc_model == 'e6410' {
-		exec {"/bin/echo 2 | /usr/bin/tee /sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness":
-			user => root,
-			unless => "/bin/grep 2 /sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness",
+		file {'/etc/tmpfiles.d/brandenbourger-backlight.conf':
+			content => "w /sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness - - - - 2"
+			backup => false,
 		}
+		#exec {"/bin/echo 2 | /usr/bin/tee /sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness":
+		#	user => root,
+		#	unless => "/bin/grep 2 /sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness",
+		#}
 		file {'/etc/modprobe.d/wlan_brandenbourger.conf':
 			content => 'options iwlwifi led_mode=1',
 			backup  => false,
