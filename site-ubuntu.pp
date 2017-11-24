@@ -116,9 +116,9 @@ class hardware {
 			backup  => false,
 		}
 	}
-	if $graphic_model == 'gf106' {
+	if $graphic_model == 'gf108' {
 		file {'/etc/tmpfiles.d/brandenbourger-nouveau.conf':
-			content => "w /sys//// 2\n "
+			content => "w /sys/class/hwmon/hwmon0/pwm1_min - - - - 1"
 			backup => false,
 		}
 	}
