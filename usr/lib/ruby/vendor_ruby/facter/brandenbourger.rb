@@ -22,6 +22,18 @@ Facter.add(:pc_model) do
   end
 end
 
+Facter.add(:gpu_vendor) do
+  setcode do
+    require 'facter/util/config'
+
+    if Facter::Util::Config.is_windows?
+      'windows'
+    else
+	    Facter::Core::Execution.exec("grep -qi GP108 /proc/cpuinfo && echo 'gp108' || echo 'none'")
+    end
+  end
+end
+
 Facter.add(:cpu_vendor) do
   setcode do
     require 'facter/util/config'
