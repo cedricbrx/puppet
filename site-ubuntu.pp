@@ -120,7 +120,7 @@ class hardware {
 			backup  => false,
 		}
 	}
-	if $graphic_model == 'gf108' {
+	if $gpu_vendor == 'gf108' {
 		file {'/etc/tmpfiles.d/brandenbourger-nouveau.conf':
 			content => "w /sys/class/hwmon/hwmon0/pwm1_min - - - - 1",
 			backup => false,
