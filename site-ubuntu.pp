@@ -108,7 +108,7 @@ class libreoffice {
 class hardware {
 	if $pc_model == 'e6410' {
 		file {'/etc/tmpfiles.d/brandenbourger-backlight.conf':
-			content => "w /sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness - - - - 2"
+			content => "w /sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness - - - - 2",
 			backup => false,
 		}
 		#exec {"/bin/echo 2 | /usr/bin/tee /sys/devices/platform/dell-laptop/leds/dell::kbd_backlight/brightness":
