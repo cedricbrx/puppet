@@ -203,8 +203,9 @@ class gnomeshell {
 	package {"example-content":
 		ensure => purged,
 	}
-	#exec {"/bin/rm $pc_owner/examples.desktop":
-	#}
+	file {"/home/$pc_owner/examples.desktop":
+		ensure => absent,
+	}
 	package {["gnome-shell-extensions","gnome-shell-extension-remove-dropdown-arrows","gnome-shell-extension-better-volume"]:
 		ensure => installed,
 	}
