@@ -11,6 +11,7 @@ org/gnome/gedit/preferences/editor/create-backup-copy
 /org/gnome/desktop/interface/enable-animations
 /org/gnome/desktop/interface/clock-show-date
 /org/gnome/desktop/interface/clock-format
+/org/gnome/desktop/interface/gtk-theme
 
 /org/gnome/desktop/search-providers/disabled
 
