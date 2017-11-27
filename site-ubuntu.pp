@@ -163,10 +163,10 @@ class multimedia {
 		command => '/bin/sh -c "echo ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true | debconf-set-selections"',
 		unless  => '/usr/bin/debconf-get-selections | /bin/grep "msttcorefonts/accepted-mscorefonts-eula.*true"',
 	}
-	package {"ubuntu-restricted-extras":
-		ensure => installed,
-		require => Exec['accept-msttcorefonts-license'],
-	}
+	#package {"ubuntu-restricted-extras":
+	#	ensure => installed,
+	#	require => Exec['accept-msttcorefonts-license'],
+	#}
 	package {"rhythmbox":
 		ensure => purged,
 	}
