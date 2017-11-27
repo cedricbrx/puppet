@@ -24,6 +24,12 @@ class repository {
 		checksum       => sha256,
 		checksum_value => '1f36daf59e021d10d53d9aedb5d784db59ce2d73c01594352eb9c6b809a70161',
 	}
+	file {'/etc/apt/trusted.gpg.d/singal.gpg':
+		source         => 'https://github.com/cedricbrx/puppet/raw/master/etc/apt/trusted.gpg.d/signal.gpg',
+		ensure         => present,
+		checksum       => sha256,
+		checksum_value => '1f36daf59e021d10d53d9aedb5d784db59ce2d73c01594352eb9c6b809a70161',
+	}
 	file {'/etc/apt/sources.list':
 		ensure => present,
 		owner   => root,
@@ -39,6 +45,13 @@ class repository {
 	#	require => File['/etc/apt/trusted.gpg.d/brandenbourger.gpg'],
 	#	content => "deb https://raw.githubusercontent.com/cedricbrx/packages/master/ $lsbdistcodename main",
 	#}
+	file {'/etc/apt/sources.list.d/signal.list':
+		ensure => present,
+		owner   => root,
+		group   => root,
+		mode    => '644',
+		content => "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main",
+	}
 	package {'apt-transport-https':
 		ensure => installed,
 	}
@@ -347,5 +360,12 @@ class games {
 	}
 	package {"gnome-sudoku":
 		ensure => purged,
+	}
+}
+
+class signal {
+	require apt
+	package {"signal-desktop":
+		ensure => installed,
 	}
 }
