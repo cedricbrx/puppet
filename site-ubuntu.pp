@@ -9,9 +9,6 @@ node default {
 	include hardware
 	include thunderbird
 	include libreoffice
-	if $facts['pc_owner'] != 'alex'{
-		include synology
-	}
 }
 
 class repository {
