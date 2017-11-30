@@ -19,7 +19,9 @@ if [ $? -ne 0 ]; then
 	/usr/bin/logger -i "Puppet has no internet connection, exiting" -t "puppet-apply"
 	exit 1
 fi
+#mkdir -p /etc/facter/facts.d/
 wget -N -q https://raw.githubusercontent.com/cedricbrx/puppet/master/usr/lib/ruby/vendor_ruby/facter/brandenbourger.rb -O /usr/lib/ruby/vendor_ruby/facter/brandenbourger.rb
+#wget -N -q https://raw.githubusercontent.com/cedricbrx/puppet/master/etc/facter.d/brandenbourger.sh -O /etc/facter.d/brandenbourger.sh
 puppet apply /etc/puppet/site-$distri.pp
 touch /etc/dconf/db/brandenbourger.d/locks
 dconf update
